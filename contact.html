@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Ann Rule Deconstructed</title>
+    <meta name="description" content="Contact Brad Cunningham regarding Ann Rule Deconstructed. Send your questions and comments.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .contact-header h1 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-header p {
+            color: var(--text-light);
+            font-size: 18px;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-form-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-info-section {
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .form-label .required {
+            color: var(--accent-color);
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-family: inherit;
+            transition: var(--transition);
+            background-color: white;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .form-input.error,
+        .form-textarea.error {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .submit-button:hover:not(:disabled) {
+            background: linear-gradient(135deg, #2980b9, var(--secondary-color));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .contact-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .contact-methods {
+            margin-top: 30px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .social-section {
+            margin-top: 30px;
+        }
+        
+        .social-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .social-links-contact {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link-contact {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .social-link-contact.twitter {
+            background: #1da1f2;
+            color: white;
+        }
+        
+        .social-link-contact.facebook {
+            background: #4267b2;
+            color: white;
+        }
+        
+        .social-link-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .message-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .message {
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+            box-shadow: var(--shadow);
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .message--success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message--error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .privacy-notice {
+            background: #e8f4fd;
+            border: 1px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .privacy-notice h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contact-form-section,
+            .contact-info-section {
+                padding: 30px 20px;
+            }
+            
+            .contact-header h1 {
+                font-size: 28px;
+            }
+            
+            .social-links-contact {
+                flex-direction: column;
+            }
+            
+            .message-container {
+                left: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-banner">
+                <img src="images/AnnRuleBanner.png" alt="Ann Rule Deconstructed Banner" class="banner-image">
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                    <li><a href="excerpts.html" class="nav-link">Excerpts</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact Me</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h1>Contact Me</h1>
+                    <p>Have questions about Ann Rule Deconstructed? I'd like to hear from you.</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-form-section">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="first_name" class="form-label">
+                                    First Name <span class="required">*</span>
+                                </label>
+                                <input type="text" id="first_name" name="first_name" class="form-input" required maxlength="50">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last_name" class="form-label">
+                                    Last Name <span class="required">*</span>
+                                </label>
+                                <input type="text" id="last_name" name="last_name" class="form-input" required maxlength="50">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">
+                                    Email Address <span class="required">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" class="form-input" required maxlength="80">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telephone" class="form-label">
+                                    Telephone Number
+                                </label>
+                                <input type="tel" id="telephone" name="telephone" class="form-input" maxlength="30">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="comments" class="form-label">
+                                    Comments <span class="required">*</span>
+                                </label>
+                                <textarea id="comments" name="comments" class="form-textarea" required maxlength="1000" placeholder="Please share your thoughts, questions, or comments about Ann Rule Deconstructed..."></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-button">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info-section">
+                        <div class="contact-info">
+                            <h2>Get in Touch</h2>
+                            <p>I welcome correspondence from readers, legal professionals, journalists, and anyone interested in the truth behind the Ann Rule book "Dead by Sunset."</p>
+                            
+                            <p>Please use the contact form to send your message. All correspondence is read, though due to volume, individual responses may take time.</p>
+                            
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                    </svg>
+                                    <span>Email via contact form</span>
+                                </div>
+                                
+                                <div class="contact-method">
+                                    <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Response time: 7-14 days</span>
+                                </div>
+                            </div>
+                            
+                            <div class="social-section">
+                                <h3>Follow on Social Media</h3>
+                                <div class="social-links-contact">
+                                    <a href="https://twitter.com/BradCunningham" class="social-link-contact twitter" target="_blank" rel="noopener">
+                                        Twitter
+                                    </a>
+                                    <a href="https://www.facebook.com/brad.cunningham.9216?fref=ts" class="social-link-contact facebook" target="_blank" rel="noopener">
+                                        Facebook
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="privacy-notice">
+                    <h4>Privacy Notice</h4>
+                    <p>Your contact information will be used solely for responding to your inquiry. We do not share, sell, or distribute personal information to third parties. All communications are confidential and secure.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ann Rule Deconstructed. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Enhanced form handling specifically for contact page
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.addEventListener('submit', handleFormSubmit);
+                
+                // Real-time validation
+                const inputs = form.querySelectorAll('input, textarea');
+                inputs.forEach(input => {
+                    input.addEventListener('blur', validateField);
+                    input.addEventListener('input', clearError);
+                });
+            }
+        });
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            // Show loading state
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            // Validate all fields
+            if (!validateForm(this)) {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                return;
+            }
+            
+            // Simulate form submission (since this is a static site)
+            setTimeout(() => {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                this.reset();
+                showMessage('Thank you for your message! I will review it and respond as soon as possible.', 'success');
+            }, 2000);
+        }
+
+        function validateForm(form) {
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!validateField({ target: field })) {
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+            
+            // Clear previous error state
+            field.classList.remove('error');
+            
+            // Check required fields
+            if (field.hasAttribute('required') && !value) {
+                field.classList.add('error');
+                return false;
+            }
+            
+            // Email validation
+            if (field.type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    field.classList.add('error');
+                    return false;
+                }
+            }
+            
+            // Phone validation (if provided)
+            if (field.type === 'tel' && value) {
+                const phoneRegex = /^[\+]?[\d\s\-\(\)]{10,}$/;
+                if (!phoneRegex.test(value)) {
+                    field.classList.add('error');
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        function clearError(e) {
+            e.target.classList.remove('error');
+        }
+
+        function showMessage(message, type = 'info') {
+            let messageContainer = document.querySelector('.message-container');
+            if (!messageContainer) {
+                messageContainer = document.createElement('div');
+                messageContainer.className = 'message-container';
+                document.body.appendChild(messageContainer);
+            }
+            
+            const messageElement = document.createElement('div');
+            messageElement.className = `message message--${type}`;
+            messageElement.textContent = message;
+            
+            messageContainer.appendChild(messageElement);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                messageElement.remove();
+                if (messageContainer.children.length === 0) {
+                    messageContainer.remove();
+                }
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excerpts - Ann Rule Deconstructed</title>
+    <meta name="description" content="Read excerpts from Ann Rule Deconstructed including the ADDENDA and selected chapters.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .excerpts-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .excerpts-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .excerpts-header h1 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .excerpt-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        .excerpt-section h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        
+        .excerpt-section h3 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .excerpt-text {
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .excerpt-text p {
+            margin-bottom: 20px;
+        }
+        
+        .document-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .document-item {
+            text-align: center;
+            background: var(--surface-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .document-item:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        
+        .document-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .document-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .view-larger-btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .view-larger-btn:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+        
+        .chapter-excerpt {
+            background: var(--surface-color);
+            border-left: 4px solid var(--accent-color);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .chapter-title {
+            color: var(--accent-color);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .addenda-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .important-note {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin: 20px 0;
+            color: #856404;
+        }
+        
+        .important-note strong {
+            color: #dc3545;
+        }
+        
+        .separator {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .separator::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+        }
+        
+        .separator span {
+            background: white;
+            padding: 0 20px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        /* Modal for larger images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 5%;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-modal:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .excerpts-container {
+                padding: 0 10px;
+            }
+            
+            .excerpt-section {
+                padding: 25px 20px;
+            }
+            
+            .excerpts-header h1 {
+                font-size: 28px;
+            }
+            
+            .document-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .chapter-excerpt {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-banner">
+                <img src="images/AnnRuleBanner.png" alt="Ann Rule Deconstructed Banner" class="banner-image">
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                    <li><a href="excerpts.html" class="nav-link active">Excerpts</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Me</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="excerpts-container">
+                <div class="excerpts-header">
+                    <h1>Excerpts from Ann Rule Deconstructed</h1>
+                </div>
+
+                <div class="excerpt-section addenda-section">
+                    <h2>ADDENDA</h2>
+                    <div class="excerpt-text">
+                        <p>Boys' Letter to Oregon Parole Board, June 1995 concerning that they were not allowed to testify as my alibi witnesses at my criminal trial (they were cut-off from any further contact with me after they sent this letter to the Parole Board).</p>
+                        
+                        <p>Handwritten notes of Detective Jerry Finch documenting his interview on 9/26/86 of Travis confirming my alibi for Cheryl's murder. These handwritten police notes have the indicia of reliability in court, but Judge Timothy Alexander denied me showing them to either the boys to refresh their recollection or the jury to confirm my alibi (Def. Exhibits 159, 160 and 161). Further, the Judge would not let me even submit them as an offer of proof (for appeal). His clerk entered the words "discovery violation" on the court register, which was false.</p>
+                        
+                        <div class="important-note">
+                            <strong>FINCH'S INTERVIEW NOTES CONFIRMED MY ALIBI</strong> Signed statement of State contracted tow-truck driver Harley Collins indicating Cheryl may have been murdered by State police Detective Finch, who had told him they were dating.
+                        </div>
+                    </div>
+                    
+                    <div class="document-gallery">
+                        <div class="document-item">
+                            <img src="images/ardextra001.jpg" alt="Legal Document 1" class="document-image" onclick="openModal(this.src)">
+                            <a href="images/ardextra001.jpg" target="_blank" class="view-larger-btn">View Larger</a>
+                        </div>
+                        
+                        <div class="document-item">
+                            <img src="images/ardextra006.jpg" alt="Legal Document 2" class="document-image" onclick="openModal(this.src)">
+                            <a href="images/ardextra006.jpg" target="_blank" class="view-larger-btn">View Larger</a>
+                        </div>
+                        
+                        <div class="document-item">
+                            <img src="images/image089.png" alt="Evidence Document 1" class="document-image" onclick="openModal(this.src)">
+                            <a href="images/image089.png" target="_blank" class="view-larger-btn">View Larger</a>
+                        </div>
+                        
+                        <div class="document-item">
+                            <img src="images/image090.png" alt="Evidence Document 2" class="document-image" onclick="openModal(this.src)">
+                            <a href="images/image090.png" target="_blank" class="view-larger-btn">View Larger</a>
+                        </div>
+                        
+                        <div class="document-item">
+                            <img src="images/image091.png" alt="Evidence Document 3" class="document-image" onclick="openModal(this.src)">
+                            <a href="images/image091.png" target="_blank" class="view-larger-btn">View Larger</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="separator">
+                    <span>• • •</span>
+                </div>
+
+                <div class="excerpt-section">
+                    <div class="chapter-excerpt">
+                        <div class="chapter-title">Chapter 14: Diversions</div>
+                        <div class="excerpt-text">
+                            <p>JUMPING BACK IN TIME A LITTLE, for recreation, and as a reprieve to the hedonistic and adventurous swinging scene, Joan Huston and I frequently took road trips. Admittedly, I initially organized these types of trips because I had another agenda. Later, they became one of our priorities.</p>
+                            
+                            <p>If there was a chink in the armor of my relationship with Joan, it was her drinking. Alcohol could and would, change her personality. Sometimes it was okay, and then other times it was a very bad thing. This did not mean I loved her any less; it was a red flag, early on. Despite my complete inexperience with alcoholism, I recognized it as a problem we should try to avoid. Intentionally, I began to steer-away from any social plans or situations, which guaranteed the potential for heavy alcoholic consumption. One of the diversions I came up with was to take road trips to incorporate Joan's interest in exploring, and my interest in camping/hunting.</p>
+                            
+                            <p>Joan was never a prissy, don't-get-me-dirty girl. We would wash ourselves in mountain streams, cook on campfires, and eat the wild game I killed, or caught. Several times we both took juniper (pine and tamarack too) smoke baths as well. She enjoyed our remote trips to explore not only small towns, but also especially old abandoned homesteads. Deserted farms, especially those in remote areas, usually presented the most fascinating glimpse of the human struggle.</p>
+                            
+                            <p>These road trips required us to drive 3 to 5 hours (sometimes longer) across the state in our VW camper van. There was never a road trip we took that was not interrupted by at least one, maybe two, "[perceived] emergency" pull-over to have rip-your-clothes-off sex in the van, and even once or twice, outside in the woods, even on the ground. We joked about how pathetic we were, completely unable to resist the urge to fuck. These were great times.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="excerpt-section">
+                    <div class="chapter-excerpt">
+                        <div class="chapter-title">Chapter 16: Joan Kathleen Keeney</div>
+                        <div class="excerpt-text">
+                            <div style="text-align: center; margin: 20px 0;">
+                                <img src="images/Joan_K_Kenny.jpg" alt="Joan Kathleen Keeney" style="max-width: 200px; border-radius: 8px; box-shadow: var(--shadow);">
+                            </div>
+                            
+                            <p>When I lived in Madison Park, I re-met Joan K. Keeney, a woman I casually knew at the University of Washington, but never dated. Joan K. was a strikingly beautiful and gorgeous redhead, tall (5'10"), with a model's body, and natural 34D breasts. Joan was also Phi Beta Kappa and graduated Summa Cum Laude from the University of Washington. She was a very, very bright lady. In college, I was a member of the Theta Chi Fraternity, and Joan K. lived next door in the Gamma Phi Beta sorority (her pledge sorority sister was Cheryl Keeton). Joan K., in college, dated Frank, one of my fraternity brothers.</p>
+                            
+                            <p>In 1975, when Joan K. and I started to date, I was becoming financially successful, earning the equivalent of more than $100,000 per year, and beginning to dabble in commercial real estate development. Joan Keeney's father was an architect, and she was generally familiar with the types of work I was doing. At this time, Joan K. was teaching second grade, also in the Bellevue School District (same as Joan Huston). Joan K. moved into my Madison Park apartment, and began to work with me on my commercial developments, initially a 6-unit apartment, and then a 21-unit apartment building, both being built in Kirkland, Washington. We formed a corporation, and called it SMALL VENTURES, Inc. The apartments were named, "habitats" (Lakeview Habitat; Sylvan Habitat). At this time I formed another company called International Leasing, and placed the ownership of my 36' sailboat into the new company. The boat was named "The Last Habitat".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="excerpt-section">
+                    <div class="chapter-excerpt">
+                        <div class="chapter-title">Chapter 18: Life with Cheryl</div>
+                        <div class="excerpt-text">
+                            <p>Cheryl and I continued to live together in Madison Park in our waterfront condominium. Life was good. We planned to marry and have children. We traveled extensively, and took time to go sailing in our sailboats on Lake Washington and Puget Sound. On one of our road-trips over the North Cascades Highway, I clearly recall she bought me a light-blue, cotton, long-sleeved, Levi's button shirt. When she gave it to me, I did not like it, but I did not know why. I never wore the shirt. Now as I sit here writing this, behind me, hanging from my clothes hooks, are two of these exact shirts, same color, same cut, same buttons, everything. They are standard Oregon Department of Corrections prison-issue shirts. The only thing they are missing is the little red Levi's tag on the pocket.</p>
+                            
+                            <div style="text-align: center; margin: 30px 0;">
+                                <img src="images/RoylesRoyce.png" alt="Cheryl and the Rolls Royce" style="max-width: 400px; border-radius: 8px; box-shadow: var(--shadow);">
+                                <p style="font-style: italic; margin-top: 10px; color: var(--text-light);">This photo of Cheryl was taken in Palm Springs, California</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="excerpt-section">
+                    <div class="chapter-excerpt">
+                        <div class="chapter-title">Chapter 13: April Ann Arwood</div>
+                        <div class="excerpt-text">
+                            <div style="text-align: center; margin: 20px 0;">
+                                <img src="images/AprilAnnArwood1.png" alt="April Ann Arwood" style="max-width: 200px; border-radius: 8px; box-shadow: var(--shadow);">
+                            </div>
+                            
+                            <p>Years later I was to find myself in another, similarly erotic experience with my long-time girlfriend, and former Portland, Oregon resident, April Ann Arwood.</p>
+                            
+                            <p>We were visiting from Houston. It was a dreary, rainy day in the Northwest, which had caused us to suffer through a rough, bumpy flight into Portland earlier that day. It was around noon when I rented a car at the airport, and we drove to the Lloyd Center Red Lion Inn where we had reservations. There was nothing on my itinerary that showed we had planned anything for the evening.</p>
+                            
+                            <p>After checking into the hotel, we went directly to our room for good, mid-day, jet-lag sex, followed by an afternoon nap, and later, room service. After eating our light dinner, we opted to go downstairs and sit in the lobby bar to people-watch.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="important-note">
+                    <strong>Content Warning:</strong> The full book contains mature content and explicit descriptions. These excerpts have been edited for general audiences while maintaining the essential narrative and legal context.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for viewing larger images -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ann Rule Deconstructed. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
